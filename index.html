@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <title>Anees | Copywriter</title>
 <style>
@@ -27,9 +28,12 @@
     color: #c85b0b;
   }
   h1,h2,h3,h4,h5,h6 {
-    font-family: Georgia, 'Times New Roman', serif;
-    margin-top: 0;
-  }
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #f97316;
+  letter-spacing: -0.4px;
+}
+
   /* Container */
   .container {
     max-width: 1200px;
@@ -75,60 +79,6 @@
     }
   }
 
-  /* Hero */
-  #home {
-    min-height: 100vh;
-    padding-top: 80px; /* navbar height */
-    background: linear-gradient(to bottom, #fff3e0, #fff);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  #home h1 {
-    font-size: 3.5rem;
-    color: #f97316;
-    margin-bottom: 20px;
-  }
-  #typewriter-text {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #555;
-    border-right: 2px solid #f97316;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  /* Buttons */
-  .btn {
-    display: inline-block;
-    padding: 12px 28px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 10px 10px 0 10px;
-    text-decoration: none;
-  }
-  .btn-primary {
-    background-color: #f97316;
-    color: white;
-    border: none;
-  }
-  .btn-primary:hover {
-    background-color: #c85b0b;
-  }
-  .btn-outline {
-    background: none;
-    border: 2px solid #f97316;
-    color: #f97316;
-  }
-  .btn-outline:hover {
-    background-color: #fff3e0;
-  }
-
   /* Sections */
   section {
     padding: 60px 20px;
@@ -141,30 +91,58 @@
     margin-bottom: 40px;
   }
 
-  /* About Me */
   #about .content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-    align-items: center;
-  }
-  #about img {
-    border-radius: 10px;
-    width: 280px;
-    height: 280px;
-    object-fit: cover;
-    box-shadow: 0 8px 20px rgba(249,115,22,0.3);
-  }
-  #about .text {
-    flex: 1 1 400px;
-    color: #555;
-    font-size: 1.1rem;
-  }
-  #about .text p {
-    margin-bottom: 15px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#about .text {
+  flex: 1 1 500px;
+  color: #444;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+#about .text p {
+  margin-bottom: 15px;
+}
+
+#about .photo-frame {
+  width: 340px;
+  height: 450px;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #f97316;
+  border-radius: 12px; /* rectangular, slightly rounded */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: none !important; /* disable morphing if applied */
+}
+
+#about .photo-frame-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px; /* rectangular */
+}
+
+#about .photo-frame-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0; /* no shape distortions */
+}
+
+/* Remove animations */
+#about .content img,
+#about .content .text {
+  opacity: 1 !important;
+  animation: none !important;
+}
   /* Skill Bars */
   .skill {
     max-width: 500px;
@@ -436,20 +414,6 @@
   border-radius: inherit;
 }
 
-@keyframes morph {
-  0% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    transform: scale(0.9) rotate(0deg);
-  }
-  50% {
-    border-radius: 60% 40% 40% 60% / 60% 20% 80% 40%;
-    transform: scale(1.05) rotate(3deg);
-  }
-  100% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    transform: scale(1) rotate(0deg);
-  }
-}
 
 @keyframes bounce {
   0%, 100% {
@@ -478,6 +442,172 @@
 
 .social-sidebar a:hover img {
   transform: scale(1.2) rotate(5deg);
+}
+
+/* Accordion Styles */
+.accordion-item {
+  border-bottom: 1px solid #f4c085;
+  padding: 20px 0;
+}
+.accordion-toggle {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f97316;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.accordion-toggle .icon {
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+}
+.accordion-content {
+  display: none;
+  margin-top: 15px;
+  font-size: 1.05rem;
+  color: #444;
+}
+.accordion-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.accordion-item.active .accordion-content {
+  display: block;
+}
+.accordion-item.active .icon {
+  transform: rotate(45deg); /* turns "+" into "x" visually */
+}
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card.active .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  background: white;
+}
+.flip-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flip-front .service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #f97316;
+}
+.flip-front h3 {
+  color: #f97316;
+  margin: 0;
+}
+.flip-back {
+  transform: rotateY(180deg);
+  color: #444;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Phones (up to 600px) */
+@media (max-width: 600px) {
+  nav ul {
+    display: none;
+  }
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #about .content {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+
+  #about .text, #about .photo-frame {
+    width: 100% !important;
+  }
+
+  .photo-frame {
+    height: auto;
+    max-width: 300px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  #standout .container,
+  #mission .container,
+  #free-guide .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #standout img, 
+  #free-guide img {
+    max-width: 100%;
+  }
+
+  #skills .skill {
+    width: 100%;
+  }
+
+  #contact form {
+    padding: 20px;
+  }
+
+  .testimonial-card {
+    min-width: 250px;
+  }
+}
+
+/* Tablets (600px - 900px) */
+@media (max-width: 900px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+
+  .testimonial-card {
+    min-width: 220px;
+  }
+
+  .photo-frame {
+    height: auto;
+  }
 }
 
 </style>
@@ -515,38 +645,96 @@
   </a>
 </div>
 
-<section id="home">
-  <h1>Hi, I'm Anees.</h1>
-   <p style="font-size: 1.2rem; color: #666; margin-top: -10px; margin-bottom: 10px;">
-    Let's write words that connect, convert, and compel.
-  </p>
-  <div id="typewriter-text"></div>
-  <div>
-    <a href="#about" class="btn btn-primary">About Me</a>
-    <a href="#contact" class="btn btn-outline">Hire Me</a>
-  </div>
-</section>
+<div id="home-placeholder"></div>
 
-<section id="about">
+<section id="about" style="background-color: #fef3c7;">
   <h2>About Me</h2>
   <div class="content">
+    <!-- TEXT LEFT -->
+    <div class="text">
+      <p>
+        <strong>Hey, I'm Anees — your friendly neighborhood copywriter.</strong><br><br>
+        A thinker, coffee drinker, and idea tinkerer who helps brands find the right words when the right words feel impossible.<br><br>
+
+        <strong>I write copy that connects before it converts.</strong><br>
+        Because when your audience *feels* seen, they stick around.<br><br>
+
+        Whether it’s <strong>homepage copy</strong> that sounds like you (not a robot), <strong>emails</strong> that actually get opened, or <strong>ads</strong> that earn their clicks — I’m here to help you speak clearly, creatively, and confidently.<br><br>
+
+        <strong>I’m not here to stuff your page with fluff.</strong><br>
+        I’m here to craft a voice you’ll be proud to call your own — and copy that works harder than your best sales pitch.<br><br>
+
+        Let’s turn that blinking cursor into something meaningful.      
+      </p>
+    </div>
+
+    <!-- IMAGE RIGHT -->
     <div class="photo-frame">
       <div class="photo-frame-inner">
         <img src="image.jpg" alt="Anees - The copywriter">
       </div>
     </div>
-    <div class="text">
-      <p>
-        I’m a copywriter who believes the right words can do more than just fill space — they can guide, persuade, and connect. Whether it’s a well-timed email, a homepage that actually speaks to people, or ad copy that cuts through the scroll, I write with intention.
+  </div>
+</section>
 
-        I pay close attention to tone, rhythm, and clarity — making sure every line feels like it was written just for your audience. If you're looking for copy that feels natural but works hard behind the scenes, you're in the right place.      
+<section id="mission" style="background-color: #fffaf0; padding: 60px 20px; text-align: center;">
+
+  <div class="container" style="max-width: 800px; margin: 0 auto; color: #555; font-size: 1.2rem; line-height: 1.8;">
+    <p>
+      <strong>You’re a passionate business owner who wants to make a difference —</strong><br>
+      whether that’s through helping people, supporting communities, or building something meaningful that matters.<br><br>
+
+      You want to be <strong>seen, heard, and remembered</strong> — not for being loud, but for being real.<br>
+      You believe in <strong>ethical growth</strong>, <strong>honest communication</strong>, and <strong>authentic branding</strong> that resonates deeply.<br><br>
+
+      If your goal is to build trust, make impact, and do it with words that sound like <em>you</em> —<br>
+      then hey, I’m your personal <strong>word warrior</strong>.<br><br>
+
+      Let’s turn your purpose into powerful, punchy messaging that sticks.
+    </p>
+  </div>
+</section>
+
+<section id="standout" style="background-color: #ffffff; padding: 60px 20px;">
+
+  <div class="container" style="max-width: 1100px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+    
+    <div style="flex: 1 1 400px; text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/4401/4401400.png" alt="Megaphone Voice" style="width: 100%; max-width: 320px;" />
+    </div>
+
+    <div style="flex: 1 1 500px; color: #444; font-size: 1.15rem; line-height: 1.8;">
+      <p style="font-size: 1.5rem; font-weight: bold; color: #f97316;">
+        Your message deserves to be heard — loud, clear, and unforgettable.
+      </p>
+
+      <p>
+        You’ve got the ideas. The passion. The purpose. But when it comes to putting it into words? Things get tangled. You're not alone — that stuck feeling? It's real.
+      </p>
+
+      <p>
+        Maybe you've stared at a blank screen, rewriting the same line ten times. Or you've held back from launching something because it “just didn't sound right.”
+      </p>
+
+      <p>
+        <strong>Here’s the truth:</strong> Great ideas don’t speak for themselves. That’s what your copy is for.
+      </p>
+
+      <p>
+        If you’re ready to finally share your vision with confidence — with copy that sounds like you and lands with them — I’m here to help.
+      </p>
+
+      <p>
+        Let’s make your message unstoppable.
       </p>
     </div>
   </div>
 </section>
 
 
-<section id="skills">
+
+<section id="skills"  style="background-color: #fefce8;">
+
   <h2>Skills</h2>
   <div class="container">
     <div class="skill">
@@ -585,35 +773,72 @@
 </section>
 
 
+<section id="services" style="background-color: #ffffff;">
 
-<section id="services">
   <h2>Services</h2>
   <div class="grid">
-    <div class="service-card">
-      <div class="service-icon">📧</div>
-      <h3>Email Copywriting</h3>
-      <p>High-converting email sequences and newsletters that drive clicks, sales, and engagement.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🌐</div>
-      <h3>Website Copywriting</h3>
-      <p>Compelling homepage, about, and service pages that clearly communicate your brand’s value.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">💬</div>
-      <h3>Ad Copywriting</h3>
-      <p>Scroll-stopping Facebook, Google, and social media ad copy that boosts conversions and ROI.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔍</div>
-      <h3>SEO Copywriting</h3>
-      <p>Optimized content that ranks on search engines while engaging your audience naturally.</p>
+  <div class="service-card flip-card">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <div class="service-icon">📧</div>
+        <h3>Email Copywriting</h3>
+      </div>
+      <div class="flip-back">
+        <p>
+          No more robotic emails that get swiped into the trash. I write warm, human emails that land, get read, and get clicked — while sounding like *you* at your best.
+        </p>
+      </div>
     </div>
   </div>
+
+  <div class="service-card flip-card">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <div class="service-icon">🌐</div>
+        <h3>Website Copywriting</h3>
+      </div>
+      <div class="flip-back">
+        <p>
+          Your website is your first impression — let’s make it unforgettable. I craft homepage, about, and service page copy that welcomes, informs, and converts.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-card flip-card">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <div class="service-icon">💬</div>
+        <h3>Ad Copywriting</h3>
+      </div>
+      <div class="flip-back">
+        <p>
+          In a sea of noise, I write scroll-stopping, thumb-pausing ad copy for Facebook, Google, and beyond — copy that catches attention and earns results.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-card flip-card">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <div class="service-icon">🔍</div>
+        <h3>SEO Copywriting</h3>
+      </div>
+      <div class="flip-back">
+        <p>
+          Let’s get you seen *and* remembered. I blend SEO strategy with brand personality to write content that ranks high and reads beautifully.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 </section>
 
 
-<section id="testimonials">
+
+<section id="testimonials" style="background-color: #fffbeb;">
   <h2>Testimonials</h2>
   <div class="container" id="testimonial-carousel">
     <div class="testimonial-card">
@@ -643,8 +868,58 @@
   </div>
 </section>
 
+<section id="clients" style="background-color: #fde68a; padding: 60px 20px; text-align: center;">
+  <div class="container" style="max-width: 900px; margin: 0 auto;">
+    
+    <h2 style="color: #f97316;">I Write for Purpose-Driven Brands & Bold Thinkers</h2>
+    <p style="font-size: 1.2rem; color: #444; margin-bottom: 30px;">
+      I collaborate with creatives, entrepreneurs, and small businesses that believe in what they do — and want their words to show it.
+    </p>
 
-<section id="contact">
+    <div style="text-align: left; font-size: 1.05rem; color: #444; line-height: 1.8;">
+      <ul style="list-style-type: '+ '; padding-left: 20px;">
+        <li>You believe in connection over clicks — and want your message to spark something meaningful.</li>
+        <li>Your brand has values, heart, and a mission that deserves to be heard loud and clear.</li>
+        <li>You want your copy to feel authentic, not automated — like a conversation, not a campaign.</li>
+        <li>You're scaling or shifting, and ready to finally align your words with your growth.</li>
+        <li>You’re done second-guessing your message and want a writer who just *gets it*.</li>
+        <li>You care deeply about your clients and want them to feel seen, understood, and excited to work with you.</li>
+      </ul>
+    </div>
+
+    <h3 style="color: #f97316; margin-top: 40px;">Did I just read your mind?</h3>
+    <a href="#contact" class="btn btn-primary" style="margin-top: 10px;">Let’s Work Together</a>
+  </div>
+</section>
+
+<section id="free-guide" style="background: #fff3e0; padding: 60px 20px;">
+  <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px; max-width: 1100px; margin: auto;">
+    
+    <!-- Flyer Image -->
+    <div style="flex: 1 1 420px; text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331943.png" alt="Free Copy Guide Flyer" style="max-width: 320px; width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+    </div>
+
+    <!-- Text & CTA -->
+    <div style="flex: 1 1 500px; color: #444; font-size: 1.1rem;">
+      <h2 style="color: #f97316;">Want Copy That Grabs Attention (Without the Guesswork)?</h2>
+      <p>
+        Struggling to write high-converting copy that doesn't sound like a sales pitch? You’re not alone. But you don’t need to stare at a blinking cursor anymore.
+      </p>
+      <p>
+        Download my <strong>FREE flyer-style guide</strong> filled with writing prompts, examples, and formulas to craft copy that actually sells — and sounds like you.
+      </p>
+      <p>
+        Whether you’re launching, scaling, or just starting out, this is your shortcut to persuasive, personality-packed writing.
+      </p>
+      <a href="#contact" class="btn btn-primary" style="margin-top: 15px;">Gimme the Guide</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" style="background-color: #fefce8;">
+
   <h2>Contact Me</h2>
   <form action="https://formspree.io/f/xanjoryv" method="POST">
   <label for="name">Name *</label>
@@ -677,46 +952,15 @@
 </footer>
 
 <script>
-  // Typewriter effect for hero section
-  const typewriterText = document.getElementById('typewriter-text');
-  const phrases = [
-"Words that sell. Copy that works.",
-  "Emails that get opened and clicked.",
-  "SEO copy built to rank and convert.",
-  "Ad copy that captures attention.",
-  "Web copy that speaks your brand."    
-];
-  let currentPhraseIndex = 0;
-  let currentCharIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 80;
-  let pauseTime = 2000;
+  fetch("home.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("home-placeholder").innerHTML = data;
+    })
+    .catch(error => console.error("Failed to load home.html", error));
+</script>
 
-  function type() {
-    let currentPhrase = phrases[currentPhraseIndex];
-    if (isDeleting) {
-      currentCharIndex--;
-      typewriterText.textContent = currentPhrase.substring(0, currentCharIndex);
-      if (currentCharIndex === 0) {
-        isDeleting = false;
-        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-        setTimeout(type, 500);
-      } else {
-        setTimeout(type, typingSpeed / 2);
-      }
-    } else {
-      currentCharIndex++;
-      typewriterText.textContent = currentPhrase.substring(0, currentCharIndex);
-      if (currentCharIndex === currentPhrase.length) {
-        isDeleting = true;
-        setTimeout(type, pauseTime);
-      } else {
-        setTimeout(type, typingSpeed);
-      }
-    }
-  }
-  type();
-  
+<script>
 
   // Animate skill bars on scroll
   function animateSkills() {
@@ -761,7 +1005,35 @@ function animateAbout() {
 window.addEventListener('scroll', animateAbout);
 animateAbout();
 
+
 </script>
+<script>
+  const cards = document.querySelectorAll('.flip-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('active');
+    });
+  });
+</script>
+<script>
+  const faders = document.querySelectorAll('.fade-up');
+  const appearOptions = {
+    threshold: 0.3
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('appear');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
 
 </body>
 </html>
