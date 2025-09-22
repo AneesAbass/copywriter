@@ -1,1039 +1,386 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/png" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
-<title>Anees | Copywriter</title>
-<style>
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fffaf0;
-    color: #333;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-  }
-  a {
-    color: #f97316; /* orange */
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  a:hover {
-    color: #c85b0b;
-  }
-  h1,h2,h3,h4,h5,h6 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  color: #f97316;
-  letter-spacing: -0.4px;
-}
-
-  /* Container */
-  .container {
-    max-width: 1200px;
-    padding: 0 20px;
-    margin: 0 auto;
-  }
-  /* Navbar */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-  nav .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav .logo {
-    font-family: Georgia, serif;
-    font-size: 1.75rem;
-    font-weight: bold;
-    color: #f97316;
-  }
-  nav ul {
-    list-style: none;
-    margin: 0; padding: 0;
-    display: flex;
-    gap: 30px;
-  }
-  nav ul li a {
-    font-weight: 600;
-  }
-
-  /* Responsive nav */
-  @media (max-width: 768px) {
-    nav ul {
-      display: none;
-    }
-  }
-
-  /* Sections */
-  section {
-    padding: 60px 20px;
-  }
-  
-  section h2 {
-    color: #f97316;
-    font-size: 2.75rem;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  #about .content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#about .text {
-  flex: 1 1 500px;
-  color: #444;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-
-#about .text p {
-  margin-bottom: 15px;
-}
-
-#about .photo-frame {
-  width: 340px;
-  height: 450px;
-  padding: 10px;
-  background: #fff;
-  border: 2px solid #f97316;
-  border-radius: 12px; /* rectangular, slightly rounded */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  animation: none !important; /* disable morphing if applied */
-}
-
-#about .photo-frame-inner {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 8px; /* rectangular */
-}
-
-#about .photo-frame-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0; /* no shape distortions */
-}
-
-/* Remove animations */
-#about .content img,
-#about .content .text {
-  opacity: 1 !important;
-  animation: none !important;
-}
-  /* Skill Bars */
-  .skill {
-    max-width: 500px;
-    margin: 0 auto 25px auto;
-  }
-  .skill-label {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #555;
-  }
-  .skill-bar-bg {
-    background: #ddd;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 20px;
-  }
-  .skill-bar-fill {
-    height: 20px;
-    background-color: #f97316;
-    width: 0%;
-    border-radius: 20px;
-    transition: width 2s ease;
-  }
-
-  /* Portfolio */
-  #portfolio .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .portfolio-card {
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
-  .portfolio-card:hover {
-    box-shadow: 0 10px 28px rgba(249,115,22,0.3);
-    transform: translateY(-5px);
-  }
-  .portfolio-card h3 {
-    color: #f97316;
-    margin-bottom: 15px;
-    font-weight: 700;
-  }
-  .portfolio-card p {
-    margin-bottom: 15px;
-    color: #555;
-  }
-  .portfolio-card a {
-    font-weight: 600;
-    color: #f97316;
-  }
-
-  /* Services */
-  #services .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    color: #555;
-  }
-  .service-card {
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
-  .service-card:hover {
-    box-shadow: 0 10px 28px rgba(249,115,22,0.3);
-    transform: translateY(-5px);
-  }
-  .service-icon {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    color: #f97316;
-  }
-  .service-card h3 {
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #f97316;
-  }
-
-  /* Testimonials */
-  #testimonials {
-    background-color: #fff3e0;
-  }
-  #testimonials .container {
-    max-width: 900px;
-  }
-  #testimonial-carousel {
-    display: flex;
-    gap: 30px;
-    overflow: hidden;
-  }
-  .testimonial-card {
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    min-width: 280px;
-    flex-shrink: 0;
-    text-align: center;
-  }
-  .testimonial-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 15px;
-    box-shadow: 0 4px 10px rgba(249,115,22,0.4);
-  }
-  .testimonial-quote {
-    font-style: italic;
-    margin-bottom: 15px;
-    color: #444;
-  }
-  .testimonial-name {
-    font-weight: 700;
-    color: #f97316;
-  }
-  .testimonial-role {
-    color: #777;
-    font-size: 0.9rem;
-  }
-
-  /* Contact */
-  #contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  }
-  #contact form label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #555;
-  }
-  #contact form input,
-  #contact form textarea,
-  #contact form select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    border: 1.5px solid #ccc;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  #contact form input:focus,
-  #contact form textarea:focus,
-  #contact form select:focus {
-    outline: none;
-    border-color: #f97316;
-  }
-  #contact form textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  #contact form button {
-    background-color: #f97316;
-    color: white;
-    padding: 15px 0;
-    font-weight: 700;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
-  }
-  #contact form button:hover {
-    background-color: #c85b0b;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 25px 15px;
-    background: #f97316;
-    color: white;
-    font-weight: 600;
-  }
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#about .content img,
-#about .content .text {
-  opacity: 0;
-  animation: fadeInUp 1.2s ease-out forwards;
-}
-
-#about .content img {
-  animation-delay: 0.2s;
-}
-#about .content .text {
-  animation-delay: 0.4s;
-}
-@keyframes zoomFade {
-  0% {
-    opacity: 0;
-    transform: scale(0.95) translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-#about .content img,
-#about .content .text {
-  opacity: 0;
-  animation: zoomFade 1s ease-out forwards;
-  animation-play-state: paused;
-}
-
-#about .content img {
-  animation-delay: 0.2s;
-}
-
-#about .content .text {
-  animation-delay: 0.5s;
-}
-
-#about .photo-frame {
-  position: relative;
-  width: 260px;
-  height: 260px;
-  background: linear-gradient(135deg, #f97316, #ffb347);
-  padding: 8px;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Not a circle! */
-  animation: morph 3s ease-in-out forwards;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-#about .photo-frame-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-#about .photo-frame-inner img {
-  width: 95%;
-  height: 95%;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-.social-sidebar {
-  position: fixed;
-  top: 40%;
-  right: 15px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.social-sidebar a img {
-  width: 40px;
-  transition: transform 0.3s ease;
-  animation: bounce 2s infinite;
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
-}
-
-.social-sidebar a:hover img {
-  transform: scale(1.2) rotate(5deg);
-}
-
-/* Accordion Styles */
-.accordion-item {
-  border-bottom: 1px solid #f4c085;
-  padding: 20px 0;
-}
-.accordion-toggle {
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #f97316;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-.accordion-toggle .icon {
-  font-size: 1.5rem;
-  transition: transform 0.2s;
-}
-.accordion-content {
-  display: none;
-  margin-top: 15px;
-  font-size: 1.05rem;
-  color: #444;
-}
-.accordion-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 18px;
-  background-color: #f97316;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 600;
-}
-.accordion-item.active .accordion-content {
-  display: block;
-}
-.accordion-item.active .icon {
-  transform: rotate(45deg); /* turns "+" into "x" visually */
-}
-.flip-card {
-  perspective: 1000px;
-  cursor: pointer;
-}
-.flip-inner {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-.flip-card.active .flip-inner {
-  transform: rotateY(180deg);
-}
-.flip-front, .flip-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 25px;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  background: white;
-}
-.flip-front {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.flip-front .service-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #f97316;
-}
-.flip-front h3 {
-  color: #f97316;
-  margin: 0;
-}
-.flip-back {
-  transform: rotateY(180deg);
-  color: #444;
-  font-size: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* Phones (up to 600px) */
-@media (max-width: 600px) {
-  nav ul {
-    display: none;
-  }
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  #about .content {
-    flex-direction: column-reverse;
-    align-items: center;
-    text-align: center;
-  }
-
-  #about .text, #about .photo-frame {
-    width: 100% !important;
-  }
-
-  .photo-frame {
-    height: auto;
-    max-width: 300px;
-  }
-
-  .container {
-    padding: 0 15px;
-  }
-
-  #standout .container,
-  #mission .container,
-  #free-guide .container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  #standout img, 
-  #free-guide img {
-    max-width: 100%;
-  }
-
-  #skills .skill {
-    width: 100%;
-  }
-
-  #contact form {
-    padding: 20px;
-  }
-
-  .testimonial-card {
-    min-width: 250px;
-  }
-}
-
-/* Tablets (600px - 900px) */
-@media (max-width: 900px) {
-  .container {
-    padding: 0 20px;
-  }
-
-  .service-card {
-    padding: 20px;
-  }
-
-  .testimonial-card {
-    min-width: 220px;
-  }
-
-  .photo-frame {
-    height: auto;
-  }
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anees | Copywriter Services</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+  <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="Quill Icon" class="logo-icon">
+  <a href="index.html">Anees</a>
+</div>
 
-<nav>
-  <div class="nav-container container">
-    <a href="#home" class="logo" style="display: flex; align-items: center; gap: 10px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" alt="Logo" class="logo-icon" style="width: 35px; animation: bounce 1.5s infinite;" />
-  <span style="font-weight: bold; font-size: 1.5rem; color: #f97316;">Anees.</span>
-</a>
+      <!-- <div class="logo">Anees</div> -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
+          <!-- <li><a href="#services">Services</a></li> -->
+            <!-- Services Dropdown -->
+        <li class="dropdown">
+          <a href="#services" class="dropbtn">Services ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="brand-messaging.html">Brand Messaging & Tone of Voice</a></li>
+            <li><a href="email-copywriting.html">Email Copywriting</a></li>
+            <li><a href="website-copywriting.html">Website Copywriting</a></li>
+            <li><a href="audit.html">Website Copy Audit</a></li>
 
-    <ul>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+          </ul>
+        </li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="#footer" class="nav-btn">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Decorative drops -->
+<div class="hero-drop one"></div>
+<div class="hero-drop two"></div>
+<div class="hero-drop three"></div>
+
+    <!-- Left Content -->
+    <div class="hero-content">
+  <h1 class="hero-title">
+    Turning your <span class="highlight">impactful ideas</span> into confident copy that makes its mark<br></h1>
+   <h2> Brand messaging strategist + creative copywriter for <span class="highlight">caring brands</span> that don’t do half-hearted.
+  </h2>
+
+
+  <div class="hero-cta">
+    <a href="#services" class="btn primary">See My Services</a>
+    <a href="#footer" class="btn secondary">Let’s Chat Words</a>
   </div>
-</nav>
-<div class="social-sidebar">
-  <a href="https://wa.me/923484577116" target="_blank" title="WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</div>
+
+    
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <!-- Left Image Frame -->
+      <div class="about-left">
+        <div class="about-frame">
+          <div class="bg-block"></div>
+          <img src="img1.jpg" alt="About Ayyan" class="about-img">
+        </div>
+      </div>
+
+      <!-- Right Text -->
+      <div class="about-right">
+        <h2 class="about-title">Ahoy! I’m <span class="highlight">Anees</span>, <br> your Vision-based copywriter</h2>
+        <p class="about-text">
+          A creative-brained, basketball lover, puzzle cracker, tea addict. And I enjoy writing words for you 
+          <strong>as if you wrote them yourself</strong>.
+        </p>
+        <p class="about-text">
+          I can’t wait to take those wild ideas trapped inside your head and turn them into a captivating message 
+          that creates a <span class="highlight">real, meaningful connection</span> — not a cliché.
+        </p>
+        <p class="about-text">
+          Words that steal your people’s hearts and keep them knocking on your door because you 
+          actually see them and not just their wallets.
+        </p>
+        <p class="about-text">
+          As a Vision-based copywriter, I specialise in <strong>brand messaging</strong>, 
+          <strong>tone of voice</strong> and <strong>creative copywriting</strong>. 
+          I help courageous brands that care get their <span class="highlight">‘why’ out there</span> 
+          so they can show who they are, what they stand for and why it matters.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- Impact Section -->
+<section class="impact" id="impact">
+  <div class="impact-inner">
+    <p class="impact-text">
+      You’re a <strong>small business</strong> that wants to make a 
+      <span class="highlight">positive impact</span> so you can help more people. 
+      You want to be <strong>seen, heard, remembered</strong> and 
+      <span class="highlight">raved about</span> for all the right reasons. 
+      And you want to do it in your own <strong>authentic and ethical way</strong> 
+      that radiates confidence and <span class="highlight">captures attention</span>.
+    </p>
+    <p class="impact-text">
+      Whether you’re here to help <strong>people</strong>, <strong>animals</strong>, 
+      <strong>the environment</strong> or all of the above, 
+      I am your <span class="highlight">personal word warrior!</span>
+    </p>
+    <a href="portfolio.html" class="btn primary impact-btn">View Portfolio</a>
+  </div>
+</section>
+
+<!-- Incomparable Section -->
+<section class="incomparable" id="incomparable">
+  <div class="incomparable-inner">
+    <!-- Text -->
+    <div class="incomparable-left">
+      <h2>
+        Be <span class="highlight">Incomparable</span>, 
+        <strong>unmatchable</strong> and <span class="highlight">unstoppable!</span>
+      </h2>
+      <p>
+        The words are on the tip of your tongue — but you can’t scream them out. 
+        Even with a megaphone in your hand, you feel stuck, like something is missing from your message.
+      </p>
+      <p>
+        And I get it: <strong>perfection obsession</strong> is road-blocking you from getting 
+        <span class="highlight">crystal clear</span> on saying what you REALLY want to say. 
+        Not to mention wasting your precious time writing when you could be doing other 
+        important things <em>(like cuddling your pet).</em>
+      </p>
+      <p>
+        But by standing on the sidelines, you’re letting your competitors 
+        <strong>win over your dream customers</strong> because they swooped in and did the thing first.
+      </p>
+      <p>
+        If you want everyone to know the <span class="highlight">positive impact</span> you’re here to make, 
+        you need to <strong>stand out strategically</strong> and show up for your audience 
+        through your <span class="highlight">online copy and content.</span>
+      </p>
+    </div>
+
+    <!-- Image -->
+    <div class="incomparable-right">
+      <div class="about-frame">
+        <div class="bg-block"></div>
+        <img src="img3.jpg" alt="Copywriter helping brand stand out" class="about-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="testimonial" id="testimonial">
+  <div class="testimonial-inner">
+    <p class="testimonial-text">
+      “Working with Anees completely transformed the way I sound in my business. For the first time, my brand feels like me — confident, clear, and impossible to ignore. He didn’t just write copy, he gave me a voice I can own.”
+    </p>
+    <p class="testimonial-author">Amanda Fox<br><span>Freelance Copywriter & Digital Strategist</span></p>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <h2 class="section-title">My <span class="highlight">Services</span></h2>
+    <p class="section-subtitle">
+      I provide copywriting solutions that help your brand <strong>connect, convert, and captivate.</strong>
+    </p>
+<div class="services-grid">
+  <!-- Row 1 -->
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2919/2919592.png" alt="Brand Messaging Icon" class="service-icon">
+    <h3>Brand Messaging & Tone of Voice</h3>
+    <p>Define your brand personality, tone of voice, and messaging so it ripples through your brand and sticks in minds.</p>
+    <a href="brand-messaging.html" class="service-link">I'M READY TO STAND OUT</a>
+  </div>
+
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2919/2919607.png" alt="Email Copywriting Icon" class="service-icon">
+    <h3>Email Copywriting</h3>
+    <p>Create personal, high-converting emails that connect with your audience and drive them to take action.</p>
+    <a href="email-copywriting.html" class="service-link">GIVE MY EMAILS A GLOW-UP</a>
+  </div>
+
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2919/2919584.png" alt="Website Copywriting Icon" class="service-icon">
+    <h3>Website Copywriting</h3>
+    <p>Turn your website into a storytelling journey that engages visitors and guides them to take action effortlessly.</p>
+    <a href="website-copywriting.html" class="service-link">TURN LURKERS INTO BUYERS</a>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2919/2919574.png" alt="Website Copy Audit Icon" class="service-icon">
+    <h3>Website Copy Audit</h3>
+    <p>Identify areas where your copy can be stronger, clearer, and more persuasive to boost results.</p>
+    <a href="audit.html" class="service-link">CRITIQUE MY COPY</a>
+  </div>
+
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/360/360958.png" alt="YouTube Script Icon" class="service-icon">
+    <h3>YouTube Script Writing</h3>
+    <p>Craft compelling, audience-focused scripts that hook viewers, maintain engagement, and drive subscriptions.</p>
+    <a href="portfolio.html" class="service-link">MAKE MY VIDEOS ENGAGING</a>
+  </div>
+
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook Ads Icon" class="service-icon">
+    <h3>Facebook Ads Copywriting</h3>
+    <p>Write scroll-stopping ad copy that grabs attention, connects emotionally, and converts clicks into customers.</p>
+    <a href="portfolio.html" class="service-link">BOOST MY ADS</a>
+  </div>
+</div>
+
+    
+  </div>
+</section>
+
+<!-- Why We're a Good Match Section -->
+<section class="good-match" id="good-match">
+  <div class="good-match-inner">
+    <!-- Centered Box Title -->
+    <div class="match-header">
+      <h2>WHY WE’RE A GOOD <br> MATCH, LIKE CELERY <br> + PEANUT BUTTER</h2>
+    </div>
+
+    <!-- Match Points -->
+    <div class="match-grid">
+      <div class="match-item">
+        <span class="match-number">ONE</span>
+        <p>Infused expert skills from a graphic design, marketing and advertising background.</p>
+      </div>
+      <div class="match-item">
+        <span class="match-number">TWO</span>
+        <p>Strategic, connection-first approach — no sleazy salesy mess.</p>
+      </div>
+      <div class="match-item">
+        <span class="match-number">THREE</span>
+        <p>Encouraging more conversations and closing the door on clichés.</p>
+      </div>
+      <div class="match-item">
+        <span class="match-number">FOUR</span>
+        <p>Empathetic, passionate and motivated for change — just like you.</p>
+      </div>
+      <div class="match-item">
+        <span class="match-number">FIVE</span>
+        <p>Mission-driven, values-inspired storytelling that keeps you on the edge of your seat.</p>
+      </div>
+      <div class="match-item">
+        <span class="match-number">SIX</span>
+        <p>A real human with mad creative skills that CHAT GPT wishes it had.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Testimonial Slider Section -->
+<section class="testimonial-slider" id="testimonial-slider">
+  <div class="testimonial-slider-inner">
+
+    <!-- Left Arrow -->
+    <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Previous" class="testimonial-prev arrow">
+
+    <!-- Slides Container -->
+    <div class="testimonial-slides">
+      <div class="testimonial-slide" style="display:none;">
+        <img src="sarah.png" alt="Girl Testimonial 3" class="testimonial-img">
+        <div class="testimonial-texts">
+          <p>“Before working with Anees, our ads looked good but weren’t performing. After his copy revamp, our campaigns started capturing attention instantly, clicks went up, and we finally saw consistent leads and sales.”</p>
+          <p>— Sarah Bregel <br> Growth-Focused Entrepreneur</p>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <img src="nj web studio.png" alt="Girl Testimonial" class="testimonial-img">
+        <div class="testimonial-texts">
+          <p>“He didn’t just write words — he uncovered what makes us different, and then gave us the voice to say it boldly. Suddenly, our website wasn’t just a portfolio, it became a salesperson that actually connects with clients before we even meet them.”</p>
+          <p>— NJ Web Studio <br> Boutique Digital Agency</p>  
+        </div>
+      </div>
+
+      <div class="testimonial-slide" style="display:none;">
+        <img src="news.jfif" alt="Girl Testimonial 2" class="testimonial-img">
+        <div class="testimonial-texts">
+          <p>“Anees transformed our scripts into stories. Viewers don’t just watch now — they engage, they comment, they share. The retention graphs speak for themselves.”</p>
+          <p>— FZSmart News <br> Digital-First News Channel</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Arrow -->
+    <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" alt="Next" class="testimonial-next arrow">
+
+  </div>
+</section>
+
+<section class="hero-video-section" id="hero-video-section">
+  <div class="video-wrapper">
+    <video id="hero-video" muted loop class="hero-video">
+      <source src="sample.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="video-overlay-content">
+    <h1 class="hero-title">
+      Turning your <span class="highlight">impactful ideas</span> into confident copy that makes its mark
+    </h1>
+    <p class="hero-subtitle">
+      Brand messaging strategist + creative copywriter for <span class="highlight">caring brands</span> that don’t do half-hearted.
+    </p>
+    <a href="#services" class="btn primary">See My Services</a>
+    <a href="#footer" class="btn secondary">Let’s Work Together</a>
+  </div>
+</section>
+
+<!-- Collaboration / CTA Section -->
+<section class="cta-collab" id="cta-collab">
+  <div class="cta-collab-inner">
+    <h1 class="cta-title">I'm a Vision-based copywriter who writes for <span class="highlight">COURAGEOUS BRANDS THAT CARE</span></h1>
+    <h2 class="cta-subtitle">I collaborate with product-based brands, service providers, entrepreneurs and small businesses in Australia.</h2>
+    
+    <p class="cta-text">
+      You have a purposeful message to share, so let’s work together if you:
+    </p>
+    
+    <ul class="cta-list">
+      <li>+ Want to make the world a <span class="highlight">better place</span>, care about the audience you serve and genuinely want to make connections and transform lives.</li>
+      <li>+ Want your words to reflect your <span class="highlight">values, mission, and vision</span> and show why you’re anything but average.</li>
+      <li>+ Want to make your customer or client feel good about purchasing or working with you, and that they are contributing to <span class="highlight">something bigger</span>.</li>
+      <li>+ Feel like your words aren't properly communicating your <span class="highlight">key message</span> the way you want. You know something is missing, but you just can’t pinpoint it.</li>
+      <li>+ Want to clearly define your <span class="highlight">dream audience</span> so you can build a like-minded community.</li>
+      <li>+ Are growing or scaling your business and are so ready to <span class="highlight">level up</span>!</li>
+    </ul>
+
+    <p class="cta-text-bold">DID I JUST READ YOUR MIND?</p>
+
+    <a href="#footer" class="btn primary cta-btn">LET'S WORK TOGETHER</a>
+  </div>
+</section>
+
+
+<!-- Footer Section -->
+<footer class="footer" id="footer">
+  <div class="footer-overlay">
+    <div class="footer-inner">
+      <h2 class="footer-name">Anees| Brand Messaging Strategist + Creative Copywriter</h2>
+      
+      <p class="footer-respect">
+        I acknowledge the Traditional Owners of Country throughout Pakistan. 
+        I pay my respects to Elders past, present and emerging.
+      </p>
+
+      <!-- <p class="footer-socials">LET’S CONNECT ON SOCIALS</p> -->
+       <p class="footer-socials">LET’S CONNECT ON SOCIALS</p>
+<div class="social-icons">
+  <a href="https://wa.me/923484577116" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp">
   </a>
-  <a href="mailto:your.copywriting.anees@gmail.com" target="_blank" title="Gmail">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
-  </a>
-  <a href="https://www.instagram.com/copywriting.anees" target="_blank" title="Instagram">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-  </a>
-  <a href="https://www.linkedin.com/in/anees-abbas-b41047342/" target="_blank" title="LinkedIn">
+  <a href="https://www.linkedin.com/in/anees-abbas-b41047342/" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
   </a>
+  <a href="https://www.instagram.com/copywriting.anees" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+  </a>
+  <a href="mailto:copywriting.anees@gmail.com" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+  </a>
 </div>
 
-<div id="home-placeholder"></div>
 
-<section id="about" style="background-color: #fef3c7;">
-  <h2>About Me</h2>
-  <div class="content">
-    <!-- TEXT LEFT -->
-    <div class="text">
-      <p>
-        <strong>Hey, I'm Anees — your friendly neighborhood copywriter.</strong><br><br>
-        A thinker, coffee drinker, and idea tinkerer who helps brands find the right words when the right words feel impossible.<br><br>
-
-        <strong>I write copy that connects before it converts.</strong><br>
-        Because when your audience *feels* seen, they stick around.<br><br>
-
-        Whether it’s <strong>homepage copy</strong> that sounds like you (not a robot), <strong>emails</strong> that actually get opened, or <strong>ads</strong> that earn their clicks — I’m here to help you speak clearly, creatively, and confidently.<br><br>
-
-        <strong>I’m not here to stuff your page with fluff.</strong><br>
-        I’m here to craft a voice you’ll be proud to call your own — and copy that works harder than your best sales pitch.<br><br>
-
-        Let’s turn that blinking cursor into something meaningful.      
-      </p>
-    </div>
-
-    <!-- IMAGE RIGHT -->
-    <div class="photo-frame">
-      <div class="photo-frame-inner">
-        <img src="image.jpg" alt="Anees - The copywriter">
-      </div>
+      
+      <p class="footer-copy">Copyright &copy; 2025 Anees. All rights reserved.</p>
     </div>
   </div>
-</section>
-
-<section id="mission" style="background-color: #fffaf0; padding: 60px 20px; text-align: center;">
-
-  <div class="container" style="max-width: 800px; margin: 0 auto; color: #555; font-size: 1.2rem; line-height: 1.8;">
-    <p>
-      <strong>You’re a passionate business owner who wants to make a difference —</strong><br>
-      whether that’s through helping people, supporting communities, or building something meaningful that matters.<br><br>
-
-      You want to be <strong>seen, heard, and remembered</strong> — not for being loud, but for being real.<br>
-      You believe in <strong>ethical growth</strong>, <strong>honest communication</strong>, and <strong>authentic branding</strong> that resonates deeply.<br><br>
-
-      If your goal is to build trust, make impact, and do it with words that sound like <em>you</em> —<br>
-      then hey, I’m your personal <strong>word warrior</strong>.<br><br>
-
-      Let’s turn your purpose into powerful, punchy messaging that sticks.
-    </p>
-  </div>
-</section>
-
-<section id="standout" style="background-color: #ffffff; padding: 60px 20px;">
-
-  <div class="container" style="max-width: 1100px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
-    
-    <div style="flex: 1 1 400px; text-align: center;">
-      <img src="https://cdn-icons-png.flaticon.com/512/4401/4401400.png" alt="Megaphone Voice" style="width: 100%; max-width: 320px;" />
-    </div>
-
-    <div style="flex: 1 1 500px; color: #444; font-size: 1.15rem; line-height: 1.8;">
-      <p style="font-size: 1.5rem; font-weight: bold; color: #f97316;">
-        Your message deserves to be heard — loud, clear, and unforgettable.
-      </p>
-
-      <p>
-        You’ve got the ideas. The passion. The purpose. But when it comes to putting it into words? Things get tangled. You're not alone — that stuck feeling? It's real.
-      </p>
-
-      <p>
-        Maybe you've stared at a blank screen, rewriting the same line ten times. Or you've held back from launching something because it “just didn't sound right.”
-      </p>
-
-      <p>
-        <strong>Here’s the truth:</strong> Great ideas don’t speak for themselves. That’s what your copy is for.
-      </p>
-
-      <p>
-        If you’re ready to finally share your vision with confidence — with copy that sounds like you and lands with them — I’m here to help.
-      </p>
-
-      <p>
-        Let’s make your message unstoppable.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-
-<section id="skills"  style="background-color: #fefce8;">
-
-  <h2>Skills</h2>
-  <div class="container">
-    <div class="skill">
-      <div class="skill-label">
-        <span>Copywriting</span><span>99%</span>
-      </div>
-      <div class="skill-bar-bg">
-        <div class="skill-bar-fill" data-percent="99"></div>
-      </div>
-    </div>
-    <div class="skill">
-      <div class="skill-label">
-        <span>SEO Writing</span><span>95%</span>
-      </div>
-      <div class="skill-bar-bg">
-        <div class="skill-bar-fill" data-percent="95"></div>
-      </div>
-    </div>
-    <div class="skill">
-      <div class="skill-label">
-        <span>Headline Crafting</span><span>95%</span>
-      </div>
-      <div class="skill-bar-bg">
-        <div class="skill-bar-fill" data-percent="95"></div>
-      </div>
-    </div>
-    <div class="skill">
-      <div class="skill-label">
-        <span>Email Funnel Strategy</span><span>90%</span>
-      </div>
-      <div class="skill-bar-bg">
-        <div class="skill-bar-fill" data-percent="90"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="services" style="background-color: #ffffff;">
-
-  <h2>Services</h2>
-  <div class="grid">
-  <div class="service-card flip-card">
-    <div class="flip-inner">
-      <div class="flip-front">
-        <div class="service-icon">📧</div>
-        <h3>Email Copywriting</h3>
-        <a href="email-samples.html" target="_blank" class="plus-icon" title="View Samples">View Samples</a>
-
-      </div>
-      <div class="flip-back">
-        <p>
-          No more robotic emails that get swiped into the trash. I write warm, human emails that land, get read, and get clicked — while sounding like *you* at your best.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="service-card flip-card">
-    <div class="flip-inner">
-      <div class="flip-front">
-        <div class="service-icon">🌐</div>
-        <h3>Website Copywriting</h3>
-      </div>
-      <div class="flip-back">
-        <p>
-          Your website is your first impression — let’s make it unforgettable. I craft homepage, about, and service page copy that welcomes, informs, and converts.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="service-card flip-card">
-    <div class="flip-inner">
-      <div class="flip-front">
-        <div class="service-icon">💬</div>
-        <h3>Ad Copywriting</h3>
-      </div>
-      <div class="flip-back">
-        <p>
-          In a sea of noise, I write scroll-stopping, thumb-pausing ad copy for Facebook, Google, and beyond — copy that catches attention and earns results.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="service-card flip-card">
-    <div class="flip-inner">
-      <div class="flip-front">
-        <div class="service-icon">🔍</div>
-        <h3>SEO Copywriting</h3>
-      </div>
-      <div class="flip-back">
-        <p>
-          Let’s get you seen *and* remembered. I blend SEO strategy with brand personality to write content that ranks high and reads beautifully.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-</section>
-
-
-
-<section id="testimonials" style="background-color: #fffbeb;">
-  <h2>Testimonials</h2>
-  <div class="container" id="testimonial-carousel">
-    <div class="testimonial-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/194/194938.png" alt="Client Icon" class="testimonial-photo" />
-      <p class="testimonial-quote">"The email sequence he wrote brought a 3x open rate increase. His copy was sharp, emotional, and effective."</p>
-      <p class="testimonial-name">- Abdur Rahim</p>
-      <p class="testimonial-role">Email Marketing Specialist</p>
-    </div>
-    <div class="testimonial-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/194/194935.png" alt="Client Icon" class="testimonial-photo" />
-      <p class="testimonial-quote">"His website copy gave my landing page a voice. Clear messaging, strong CTAs — exactly what I needed."</p>
-      <p class="testimonial-name">- Daniel M.</p>
-      <p class="testimonial-role">Freelance Web Designer</p>
-    </div>
-    <div class="testimonial-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/194/194931.png" alt="Client Icon" class="testimonial-photo" />
-      <p class="testimonial-quote">"The ad copy he delivered outperformed our previous campaigns by 40%. Concise, catchy, and on-brand."</p>
-      <p class="testimonial-name">- Laila A.</p>
-      <p class="testimonial-role">Social Ads Consultant</p>
-    </div>
-    <div class="testimonial-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/194/194926.png" alt="Client Icon" class="testimonial-photo" />
-      <p class="testimonial-quote">"He blends SEO with user experience perfectly. Our content ranks higher and reads better."</p>
-      <p class="testimonial-name">- Arif H.</p>
-      <p class="testimonial-role">Content Manager</p>
-    </div>
-  </div>
-</section>
-
-<section id="clients" style="background-color: #fde68a; padding: 60px 20px; text-align: center;">
-  <div class="container" style="max-width: 900px; margin: 0 auto;">
-    
-    <h2 style="color: #f97316;">I Write for Purpose-Driven Brands & Bold Thinkers</h2>
-    <p style="font-size: 1.2rem; color: #444; margin-bottom: 30px;">
-      I collaborate with creatives, entrepreneurs, and small businesses that believe in what they do — and want their words to show it.
-    </p>
-
-    <div style="text-align: left; font-size: 1.05rem; color: #444; line-height: 1.8;">
-      <ul style="list-style-type: '+ '; padding-left: 20px;">
-        <li>You believe in connection over clicks — and want your message to spark something meaningful.</li>
-        <li>Your brand has values, heart, and a mission that deserves to be heard loud and clear.</li>
-        <li>You want your copy to feel authentic, not automated — like a conversation, not a campaign.</li>
-        <li>You're scaling or shifting, and ready to finally align your words with your growth.</li>
-        <li>You’re done second-guessing your message and want a writer who just *gets it*.</li>
-        <li>You care deeply about your clients and want them to feel seen, understood, and excited to work with you.</li>
-      </ul>
-    </div>
-
-    <h3 style="color: #f97316; margin-top: 40px;">Did I just read your mind?</h3>
-    <a href="#contact" class="btn btn-primary" style="margin-top: 10px;">Let’s Work Together</a>
-  </div>
-</section>
-
-<section id="free-guide" style="background: #fff3e0; padding: 60px 20px;">
-  <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px; max-width: 1100px; margin: auto;">
-    
-    <!-- Flyer Image -->
-    <div style="flex: 1 1 420px; text-align: center;">
-      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331943.png" alt="Free Copy Guide Flyer" style="max-width: 320px; width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-    </div>
-
-    <!-- Text & CTA -->
-    <div style="flex: 1 1 500px; color: #444; font-size: 1.1rem;">
-      <h2 style="color: #f97316;">Want Copy That Grabs Attention (Without the Guesswork)?</h2>
-      <p>
-        Struggling to write high-converting copy that doesn't sound like a sales pitch? You’re not alone. But you don’t need to stare at a blinking cursor anymore.
-      </p>
-      <p>
-        Whether you’re launching, scaling, or just starting out, this is your shortcut to persuasive, personality-packed writing.
-      </p>
-      <a href="#contact" class="btn btn-primary" style="margin-top: 15px;">Gimme the Guide</a>
-    </div>
-  </div>
-</section>
-
-
-<section id="contact" style="background-color: #fefce8;">
-
-  <h2>Contact Me</h2>
-  <form action="https://formspree.io/f/xblkdavg" method="POST">
-  <label for="name">Name *</label>
-  <input type="text" id="name" name="name" placeholder="Your full name" required minlength="3" />
-
-  <label for="email">Email *</label>
-  <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
-
-  <label for="profession">Profession *</label>
-  <select id="profession" name="profession" required>
-    <option value="" disabled selected>Select your profession</option>
-    <option value="student">Student</option>
-    <option value="business">Business</option>
-    <option value="developer">Developer</option>
-    <option value="marketer">Marketer</option>
-    <option value="other">Other</option>
-  </select>
-
-  <label for="message">Message *</label>
-  <textarea id="message" name="message" placeholder="Write your message here" required minlength="10"></textarea>
-  <input type="text" name="_gotcha" style="display:none">
-
-  <button type="submit">Send Message</button>
-</form>
-
-</section>
-
-<footer>
-  &copy; 2025 Anees Copywriter. All rights reserved.
 </footer>
 
-<script>
-  fetch("home.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("home-placeholder").innerHTML = data;
-    })
-    .catch(error => console.error("Failed to load home.html", error));
-</script>
-
-<script>
-
-  // Animate skill bars on scroll
-  function animateSkills() {
-    const skills = document.querySelectorAll('.skill-bar-fill');
-    const triggerBottom = window.innerHeight * 0.9;
-
-    skills.forEach(skill => {
-      const skillTop = skill.getBoundingClientRect().top;
-      if(skillTop < triggerBottom) {
-        skill.style.width = skill.getAttribute('data-percent') + '%';
-      }
-    });
-  }
-  window.addEventListener('scroll', animateSkills);
-  // Initial run
-  animateSkills();
-
-  // Simple testimonial carousel (auto scroll horizontally)
-  const carousel = document.getElementById('testimonial-carousel');
-  let scrollAmount = 0;
-  function autoScrollCarousel() {
-    scrollAmount += 1;
-    if(scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
-      scrollAmount = 0;
-    }
-    carousel.scrollLeft = scrollAmount;
-  }
-  setInterval(autoScrollCarousel, 30);
-
- 
-  // Animate About Me section on scroll
-function animateAbout() {
-  const aboutSection = document.querySelector('#about .content');
-  const rect = aboutSection.getBoundingClientRect();
-  if (rect.top < window.innerHeight * 0.85) {
-    aboutSection.querySelectorAll('img, .text').forEach(el => {
-      el.style.animationPlayState = 'running';
-    });
-    window.removeEventListener('scroll', animateAbout);
-  }
-}
-window.addEventListener('scroll', animateAbout);
-animateAbout();
-
-
-</script>
-<script>
-  const cards = document.querySelectorAll('.flip-card');
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      card.classList.toggle('active');
-    });
-  });
-</script>
-<script>
-  const faders = document.querySelectorAll('.fade-up');
-  const appearOptions = {
-    threshold: 0.3
-  };
-
-  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('appear');
-      observer.unobserve(entry.target);
-    });
-  }, appearOptions);
-
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
-</script>
-
-
+  <script src="script.js"></script>
 </body>
 </html>
