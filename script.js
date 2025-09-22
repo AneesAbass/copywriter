@@ -37,11 +37,22 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 }); // 50% of section visible triggers play/pause
 
-observer.observe(section);
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
+const dropdowns = document.querySelectorAll('.dropdown');
 
 hamburger.addEventListener('click', () => {
   nav.classList.toggle('active');
+});
+
+// Toggle dropdowns on mobile
+dropdowns.forEach(drop => {
+  const btn = drop.querySelector('.dropbtn');
+  btn.addEventListener('click', (e) => {
+    if(window.innerWidth <= 768){
+      e.preventDefault();
+      drop.classList.toggle('active');
+    }
+  });
 });
 
