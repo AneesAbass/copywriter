@@ -38,3 +38,10 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 }); // 50% of section visible triggers play/pause
 
 observer.observe(section);
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+
+hamburger.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+
