@@ -1,4 +1,4 @@
-// Testimonial slider functionality
+// Testimonial slider functionality this is first file
 let currentSlide = 0;
 const slides = document.querySelectorAll(".testimonial-slide");
 const totalSlides = slides.length;
@@ -55,4 +55,5 @@ dropdowns.forEach(drop => {
     }
   });
 });
+
 
